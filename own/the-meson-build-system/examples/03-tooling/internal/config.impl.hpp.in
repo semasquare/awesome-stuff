@@ -1,0 +1,16 @@
+#ifndef __CONFIG_IMPL_HPP__
+#define __CONFIG_IMPL_HPP__
+
+#include "config.hpp"
+
+namespace tooling {
+namespace config {
+const char *NAME = "@name@";
+const char *VERSION = "@version@";
+const char *COMMIT = "@commit@";
+const char *OS = "@os@";
+const char *CPU = "@cpu@";
+}  // namespace config
+}  // namespace tooling
+
+#endif /* __CONFIG_IMPL_HPP__ */

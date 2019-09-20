@@ -1,0 +1,79 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Configure",
+            "type": "shell",
+            "command": "meson build -Db_coverage=true -Db_sanitize=address",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": ["relative", "${workspaceFolder}/build"]
+            }
+        },
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "ninja",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": ["relative", "${workspaceFolder}/build"]
+            }
+        },
+        {
+            "label": "Test",
+            "type": "shell",
+            "command": "ninja test",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Coverage",
+            "type": "shell",
+            "command": "ninja coverage-html",
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Lint",
+            "type": "shell",
+            "command": "ninja lint",
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Scan",
+            "type": "shell",
+            "command": "ninja scan-build",
+            "group": "test",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
